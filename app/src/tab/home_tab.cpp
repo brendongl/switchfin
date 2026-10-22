@@ -4,6 +4,7 @@
 
 #include "tab/home_tab.hpp"
 #include "view/recyling_video.hpp"
+#include "view/hero_banner.hpp"
 #include "api/jellyfin.hpp"
 #include "utils/keybind.hpp"
 
@@ -13,6 +14,9 @@ HomeTab::HomeTab() {
     brls::Logger::debug("Tab HomeTab: create");
     // Inflate the tab from the XML file
     this->inflateFromXMLRes("xml/tabs/home.xml");
+
+    this->hero = new HeroBanner();
+    this->boxHome->addView(this->hero, 0);
 
     this->userResume->onQuery([](size_t start, size_t pageSize) {
         std::string query = HTTP::encode_form({
@@ -49,6 +53,7 @@ HomeTab::~HomeTab() { brls::Logger::debug("View HomeTab: delete"); }
 brls::View* HomeTab::create() { return new HomeTab(); }
 
 void HomeTab::doRequest() {
+    this->hero->doRequest();
     this->userResume->reset();
     this->showNextup->reset();
     this->userResume->doRequest();
@@ -57,6 +62,7 @@ void HomeTab::doRequest() {
 
 void HomeTab::onCreate() {
     auto actionRefresh = [this](brls::View* view) {
+        this->hero->doRequest();
         this->userResume->doRequest(true);
         this->showNextup->doRequest(true);
         for (auto recyler : this->latest) {
@@ -72,6 +78,7 @@ void HomeTab::onCreate() {
     jellyfin::getJSON<jellyfin::Result<jellyfin::Collection>>(
         [ASYNC_TOKEN](const jellyfin::Result<jellyfin::Collection>& r) {
             ASYNC_RELEASE
+            this->hero->doRequest();
             this->userResume->doRequest();
             this->showNextup->doRequest();
 

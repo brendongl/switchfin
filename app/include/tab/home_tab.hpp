@@ -8,6 +8,7 @@
 #include <view/presenter.hpp>
 
 class RecylingVideo;
+class HeroBanner;
 
 class HomeTab : public AttachedView, public Presenter {
 public:
@@ -22,6 +23,7 @@ public:
 
 private:
     BRLS_BIND(brls::Box, boxHome, "home/box");
+    HeroBanner* hero = nullptr;
     BRLS_BIND(RecylingVideo, userResume, "home/user/resume");
     BRLS_BIND(RecylingVideo, showNextup, "home/show/nextup");
 

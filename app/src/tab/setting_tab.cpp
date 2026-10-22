@@ -392,7 +392,7 @@ void SettingTab::onCreate() {
         });
 
     // App theme
-    int themeIndex = conf.getOptionIndex(AppConfig::APP_THEME);
+    int themeIndex = conf.getOptionIndex(AppConfig::APP_THEME, 2);  // sipflix: dark by default
     selectorTheme->init("main/setting/others/theme/header"_i18n,
         {
             "main/setting/others/theme/1"_i18n,

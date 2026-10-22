@@ -413,7 +413,7 @@ bool AppConfig::init() {
             DanmakuCore::DANMAKU_FONT = brls::Application::getDefaultFont();
         }
         // 初始化主题
-        std::string appTheme = this->getItem(APP_THEME, std::string("auto"));
+        std::string appTheme = this->getItem(APP_THEME, std::string("dark"));
         if (appTheme == "light") {
             brls::Application::getPlatform()->setThemeVariant(brls::ThemeVariant::LIGHT);
         } else if (appTheme == "dark") {
@@ -805,13 +805,17 @@ void AppConfig::addColor(const brls::ThemeVariant tv, const std::string& name, N
 
 void AppConfig::initThemes() {
     this->addColor(brls::ThemeVariant::LIGHT, "color/app", nvgRGB(2, 176, 183));
-    this->addColor(brls::ThemeVariant::DARK, "color/app", nvgRGB(51, 186, 227));
+    this->addColor(brls::ThemeVariant::DARK, "color/app", nvgRGB(0, 164, 220));
     // metadata pills (detail pages)
     this->addColor(brls::ThemeVariant::LIGHT, "color/pill", nvgRGBA(0, 0, 0, 18));
     this->addColor(brls::ThemeVariant::DARK, "color/pill", nvgRGBA(255, 255, 255, 22));
     // surfaces placed over the background (content cards, PIN code panel...)
     this->addColor(brls::ThemeVariant::LIGHT, "color/surface", nvgRGB(255, 255, 255));
-    this->addColor(brls::ThemeVariant::DARK, "color/surface", nvgRGB(22, 24, 29));
+    this->addColor(brls::ThemeVariant::DARK, "color/surface", nvgRGB(16, 20, 28));
+    // Sipflix/Moonfin look: near-black navy background
+    brls::Theme::getDarkTheme().addColor("brls/background", nvgRGB(8, 11, 17));
+    brls::Theme::getDarkTheme().addColor("brls/clear", nvgRGB(8, 11, 17));
+    brls::Theme::getDarkTheme().addColor("brls/sidebar/background", nvgRGB(12, 16, 24));
     // 用于骨架屏背景色
     this->addColor(brls::ThemeVariant::LIGHT, "color/grey_1", nvgRGB(245, 246, 247));
     this->addColor(brls::ThemeVariant::DARK, "color/grey_1", nvgRGB(51, 52, 53));
