@@ -1,0 +1,42 @@
+<brls:Box
+    width="auto"
+    height="auto"
+    paddingLeft="@style/main/content_padding_sides"
+    paddingRight="@style/main/content_padding_sides"
+    paddingTop="@style/main/content_padding_top_bottom"
+    paddingBottom="@style/main/content_padding_top_bottom">
+
+    <brls:Box
+        axis="column"
+        width="270"
+        marginRight="16">
+
+        <brls:Header
+            height="40"
+            title="Live TV" />
+
+        <RecyclingGrid
+            id="iptv/categories"
+            grow="1"
+            wireframe="false"
+            spanCount="1"
+            itemHeight="46" />
+    </brls:Box>
+
+    <brls:Box
+        axis="column"
+        grow="1">
+
+        <brls:Header
+            id="iptv/channels/title"
+            height="40" />
+
+        <RecyclingGrid
+            id="iptv/channels"
+            grow="1"
+            wireframe="false"
+            spanCount="1"
+            itemHeight="76" />
+    </brls:Box>
+
+</brls:Box>

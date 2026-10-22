@@ -1,0 +1,12 @@
+<brls:Box
+    highlightCornerRadius="8"
+    cornerRadius="8"
+    paddingLeft="14"
+    paddingRight="10"
+    alignItems="center">
+
+    <brls:Label
+        id="iptv/category/name"
+        fontSize="18"
+        singleLine="true" />
+</brls:Box>

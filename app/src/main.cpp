@@ -30,6 +30,7 @@
 #include "tab/media_folder.hpp"
 #include "tab/search_tab.hpp"
 #include "tab/remote_tab.hpp"
+#include "tab/iptv_tab.hpp"
 #include "tab/remote_view.hpp"
 #include "tab/setting_tab.hpp"
 
@@ -103,6 +104,7 @@ int main(int argc, char* argv[]) {
     brls::Application::registerXMLView("MediaFolders", MediaFolders::create);
     brls::Application::registerXMLView("SearchTab", SearchTab::create);
     brls::Application::registerXMLView("RemoteTab", RemoteTab::create);
+    brls::Application::registerXMLView("IptvTab", IptvTab::create);
     brls::Application::registerXMLView("SettingTab", SettingTab::create);
 
     if (!brls::Application::getPlatform()->isApplicationMode()) {

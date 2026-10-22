@@ -1,0 +1,39 @@
+<brls:Box
+    highlightCornerRadius="8"
+    cornerRadius="8"
+    paddingLeft="12"
+    paddingRight="16"
+    alignItems="center">
+
+    <brls:Image
+        id="iptv/channel/logo"
+        width="84"
+        height="52"
+        marginRight="16"
+        scalingType="fit" />
+
+    <brls:Box
+        axis="column"
+        grow="1"
+        justifyContent="center">
+        <brls:Label
+            id="iptv/channel/name"
+            fontSize="20"
+            singleLine="true" />
+        <brls:Label
+            id="iptv/channel/now"
+            marginTop="4"
+            fontSize="16"
+            singleLine="true"
+            textColor="@theme/font/grey" />
+    </brls:Box>
+
+    <brls:Label
+        id="iptv/channel/num"
+        width="64"
+        marginLeft="8"
+        fontSize="16"
+        singleLine="true"
+        horizontalAlign="right"
+        textColor="@theme/font/grey" />
+</brls:Box>

@@ -1,3 +1,4 @@
+#include <regex>
 #include "api/jellyfin.hpp"
 #include "view/video_profile.hpp"
 #include "utils/misc.hpp"
@@ -22,9 +23,17 @@ VideoProfile::~VideoProfile() {
 
 #include "view/mpv_core.hpp"
 
+// never print credentials (Xtream /live/<user>/<pass>/<id>.ts, ?password=...) on screen
+static std::string maskSecrets(std::string url) {
+    static const std::regex live("(/live/[^/]+/)[^/]+/");
+    static const std::regex pass("(password=)[^&]+");
+    url = std::regex_replace(url, live, "$1***/");
+    return std::regex_replace(url, pass, "$1***");
+}
+
 void VideoProfile::init(const std::string& method) {
     auto& mpv = MPVCore::instance();
-    labelUrl->setText(mpv.getString("path"));
+    labelUrl->setText(maskSecrets(mpv.getString("path")));
     labelFormat->setText(mpv.getString("file-format"));
     labelSize->setText(misc::formatSize(mpv.getInt("file-size")));
 
